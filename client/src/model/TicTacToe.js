@@ -1,9 +1,12 @@
-import { P1, EMPTY } from "./constants";
+import { P1, BOTH, EMPTY } from "./constants";
 import TicTacToeBoard from "./TicTacToeBoard";
 class TicTacToe {
   constructor() {
     this.whoseTurn = P1;
     this.board = new TicTacToeBoard();
+  }
+  getPlayer() {
+    return this.whoseTurn;
   }
   makeMove(move) {
     // If we can successfully make a move, then check for a win.
@@ -12,20 +15,20 @@ class TicTacToe {
     // which player's turn it is.
     if (this.board.makeMove(move, this.whoseTurn)) {
       if (this.board.checkWin(this.whoseTurn)) {
-        endGame(false);
+        return this.endGame(false);
       } else if (this.board.isDraw()) {
-        endGame(true);
+        return this.endGame(true);
       } else {
         this.whoseTurn = this.board.otherPlayer(this.whoseTurn);
       }
     }
-    return false;
+    return EMPTY;
   }
   endGame(draw) {
     if (draw) {
-      return "Draw!";
+      return BOTH;
     } else {
-      return this.whoseTurn;
+      return `${this.whoseTurn} wins!`;
     }
   }
 }

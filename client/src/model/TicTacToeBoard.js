@@ -1,4 +1,4 @@
-import { P1, P2, EMPTY, WINNING_COMBINATIONS } from "./constants";
+import { P1, P2, EMPTY, WINNING_COMBINATIONS } from "./constants.js";
 class TicTacToeBoard {
   constructor() {
     this.board = [
@@ -21,15 +21,15 @@ class TicTacToeBoard {
     return newBoard;
   }
   otherPlayer(player) {
-    if (player == P1) return P2;
-    if (player == P2) return P1;
+    if (player === P1) return P2;
+    if (player === P2) return P1;
     return EMPTY;
   }
   checkWin(player) {
     // Check if the game board contains the player in any of the winning combinations
     return WINNING_COMBINATIONS.some((combination) => {
       return combination.every((index) => {
-        return this.copy()[index].contains(player);
+        return this.copy()[index] === player;
       });
     });
   }

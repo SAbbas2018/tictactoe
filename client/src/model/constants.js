@@ -1,7 +1,7 @@
 const P1 = "X";
 const P2 = "O";
 const EMPTY = "";
-const BOTH = "B";
+const BOTH = "Draw!";
 const WINNING_COMBINATIONS = [
   [0, 1, 2],
   [3, 4, 5],
