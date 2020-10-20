@@ -1,34 +1,52 @@
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
+import Axios from "axios";
 import "./App.css";
-import TicTacToe from "./model/TicTacToe";
-const { EMPTY } = require("./model/constants.js");
-
+const EMPTY = "";
+const P1 = "X";
 function App() {
-  const [game, setGame] = useState(new TicTacToe());
   // X wins, O Wins, or both ie draw
   const [winner, setWinner] = useState(null);
   // Class used to determine the endgame screen should show or not
   const [endGame, setEndGame] = useState("");
-  const [currentPlayer, setCurrentPlayer] = useState(game.getPlayer());
-  let [board, setBoard] = useState(game.board.copy());
+  const [currentPlayer, setCurrentPlayer] = useState(P1);
+  let [board, setBoard] = useState(["", "", "", "", "", "", "", "", ""]);
 
-  const startGame = () => {
-    setWinner(null);
-    setEndGame("");
-    setBoard(new TicTacToe().board);
-    setGame(new TicTacToe());
-    // console.log("start game");
+  const startGame = async () => {
+    try {
+      const response = await Axios.get(
+        "http://localhost:5000/tictactoe/getGame"
+      );
+      const { gameBoard } = response.data;
+      setWinner(null);
+      setEndGame("");
+      setBoard(gameBoard);
+      setCurrentPlayer(P1);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  const handleClick = (e) => {
+  useEffect(() => {
+    startGame();
+  }, []);
+
+  const handleClick = async (e) => {
     e.preventDefault();
-    // console.log("handle click");
+    console.log("handle click");
     const index = e.target.id;
-    let playerWinner = game.makeMove(index, currentPlayer);
-    setBoard(game.board.copy());
+    let makeMoveResponse = await Axios.post(
+      "http://localhost:5000/tictactoe/makeMove",
+      {
+        board,
+        index,
+        currentPlayer,
+      }
+    );
+    console.log(makeMoveResponse.data);
+    const { playerWinner, boardToReturn, nextPlayer } = makeMoveResponse.data;
+    setBoard(boardToReturn);
     if (playerWinner === EMPTY) {
-      setCurrentPlayer(game.getPlayer());
+      setCurrentPlayer(nextPlayer);
       return;
     }
     setWinner(playerWinner);

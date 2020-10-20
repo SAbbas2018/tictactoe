@@ -1,4 +1,4 @@
-import { P1, P2, EMPTY, WINNING_COMBINATIONS } from "./constants.js";
+const { P1, P2, EMPTY, WINNING_COMBINATIONS } = require("./constants.js");
 class TicTacToeBoard {
   constructor() {
     this.board = [
@@ -20,6 +20,9 @@ class TicTacToeBoard {
     }
     return newBoard;
   }
+  setBoard(newBoard) {
+    this.board = newBoard;
+  }
   otherPlayer(player) {
     if (player === P1) return P2;
     if (player === P2) return P1;
@@ -39,15 +42,17 @@ class TicTacToeBoard {
     });
   }
   checkValid(move) {
-    return this.board[move] === EMPTY;
+    return this.copy()[move] === EMPTY;
   }
   makeMove(move, player) {
-    if (!this.checkValid(move)) {
+    if (this.checkValid(move) === false) {
       return false;
     }
-    this.board[move] = player;
+    let newBoard = this.copy();
+    newBoard[move] = player;
+    this.setBoard(newBoard);
     return true;
   }
 }
 
-export default TicTacToeBoard;
+module.exports = TicTacToeBoard;
