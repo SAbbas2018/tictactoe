@@ -15,20 +15,25 @@
 :root {
   --cell-size: 100px;
   --mark-size: calc(var(--cell-size) * 0.9);
+  --text-color: #b1ddf1;
+  --cell-fill: #ffd147;
+  --darker-text-color: var(--cell-fill);
 }
 
 body {
   margin: 0;
   background-color: #070b0d;
+  overflow: hidden;
+  color: var(--text-color);
 }
 .App-header {
-  color: white;
+  color: var(--text-color);
   height: 35px;
-  /* border: 1px solid white; */
+  /* border: 1px solid var(--text-color); */
   display: flex;
   justify-content: space-around;
   font-size: 3rem;
-  /* #ffd147; */
+  /* var(--cell-fill); */
 }
 .board {
   width: 100vw;
@@ -44,7 +49,7 @@ body {
 .cell {
   width: var(--cell-size);
   height: var(--cell-size);
-  border: 1px solid white;
+  border: 1px solid var(--text-color);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -80,13 +85,13 @@ body {
 .cell.X::before,
 .cell.X::after,
 .cell.O::before {
-  background-color: #ffd147;
+  background-color: var(--cell-fill);
 }
 
 .board.X .cell:not(.X):not(.O):hover::before,
 .board.X .cell:not(.X):not(.O):hover::after,
 .board.O .cell:not(.X):not(.O):hover::before {
-  background-color: #b1ddf1;
+  background-color: var(--text-color);
 }
 
 .cell.X::before,
@@ -146,7 +151,7 @@ body {
   flex-direction: column;
 }
 
-.winning-message button {
+.winning-message #restartButton {
   font-size: 3rem;
   background-color: #dbff76;
   border: 1px solid black;
@@ -154,12 +159,63 @@ body {
   cursor: pointer;
 }
 
-.winning-message button:hover {
+.winning-message #restartButton:hover {
   background-color: black;
   color: #dbff76;
-  border-color: white;
+  border-color: var(--text-color);
 }
 
 .winning-message.show {
   display: flex;
+}
+
+.home-button {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 10px;
+  font-size: 1.25em;
+}
+
+.home-page {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: repeat(3, auto);
+}
+.base-tic-tac-toe {
+  background-image: url("./assets/baseTicTacToe.JPG");
+  background-repeat: no-repeat;
+  background-position: center;
+  /* Add the blur effect */
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  position: relative;
+  height: 100%;
+  width: 100%;
+  border: 3px solid white;
+  border-radius: 5%;
+}
+.option {
+  margin: 10px;
+  display: flex;
+  height: 70vh;
+  width: 30vw;
+  flex-direction: column;
+  justify-content: center;
+}
+.info {
+  display: flex;
+  flex-direction: column;
+  /* position: relative; */
+  width: 100%;
+  /* top: -50%; */
+  padding: 5px;
+  font-size: 1.35em;
+  color: var(--text-color);
+  text-align: center;
 }

@@ -16,3 +16,4 @@ app.listen(PORT, () =>
 
 //Set up Routes for TicTacToe
 app.use("/tictactoe", require("./routes/tictactoeRouter"));
+app.use("/ai", require("./routes/aiTicTacToeRouter"));

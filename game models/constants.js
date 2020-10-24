@@ -12,10 +12,14 @@ const WINNING_COMBINATIONS = [
   [0, 4, 8],
   [2, 4, 6],
 ];
+const FIRST_POSSIBLE = "First Possible Strategy";
+const RANDOM_STRATEGY = "Random Strategy";
 module.exports = {
   P1,
   P2,
   EMPTY,
   BOTH,
   WINNING_COMBINATIONS,
+  FIRST_POSSIBLE,
+  RANDOM_STRATEGY,
 };
