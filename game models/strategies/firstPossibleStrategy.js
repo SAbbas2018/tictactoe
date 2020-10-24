@@ -12,6 +12,9 @@ class FirstPossibleStrategy {
       }
     }
   }
+  name() {
+    return "First Possible Strategy";
+  }
 }
 
 module.exports = FirstPossibleStrategy;

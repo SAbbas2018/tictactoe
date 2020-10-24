@@ -37,7 +37,7 @@ body {
 }
 .board {
   width: 100vw;
-  height: 100vh;
+  height: 80vh;
   display: grid;
   justify-content: center;
   align-content: center;
@@ -218,4 +218,17 @@ body {
   font-size: 1.35em;
   color: var(--text-color);
   text-align: center;
+}
+
+.difficulty-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+  width: 100vw;
+}
+
+.difficulty-item {
+  margin: 10px;
+  width: 25%;
 }

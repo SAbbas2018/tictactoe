@@ -11,8 +11,11 @@ class RandomStrategy {
         possibleMoves.push(cell);
       }
     }
-    let index = Math.floor(Math.random() * gameBoardLength);
+    let index = Math.floor(Math.random() * possibleMoves.length);
     return possibleMoves[index];
+  }
+  name() {
+    return "Random Strategy";
   }
 }
 
