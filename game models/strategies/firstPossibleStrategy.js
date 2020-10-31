@@ -1,19 +1,22 @@
-const { EMPTY } = require("../constants");
+const { move } = require("../../routes/aiTicTacToeRouter");
+const { EMPTY, MOVE_SET, FIRST_POSSIBLE } = require("../constants");
 // This is the default AI strategy where the computer will pick the first possible empty spot for a move
 class FirstPossibleStrategy {
   constructor(player) {
     this.player = player;
   }
   getMove(gameBoard) {
-    let gameBoardLength = gameBoard.length;
-    for (let cell = 0; cell < gameBoardLength; cell = cell + 1) {
-      if (gameBoard[cell] === EMPTY) {
-        return cell;
+    let board = gameBoard.copy();
+    for (let move_list = 0; move_list < MOVE_SET.length; move_list++) {
+      for (let index = 0; index < MOVE_SET[move_list].length; index++) {
+        if (board[MOVE_SET[move_list][index]] === EMPTY) {
+          return MOVE_SET[move_list][index];
+        }
       }
     }
   }
   name() {
-    return "First Possible Strategy";
+    return FIRST_POSSIBLE;
   }
 }
 

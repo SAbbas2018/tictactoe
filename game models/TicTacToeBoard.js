@@ -1,4 +1,4 @@
-const { P1, P2, EMPTY, WINNING_COMBINATIONS } = require("./constants.js");
+const { P1, P2, BOTH, EMPTY, WINNING_COMBINATIONS } = require("./constants.js");
 class TicTacToeBoard {
   constructor() {
     this.board = [
@@ -52,6 +52,30 @@ class TicTacToeBoard {
     newBoard[move] = player;
     this.setBoard(newBoard);
     return true;
+  }
+  checkWinner() {
+    // This is specially made for the min max strategy
+    // Check if the game board contains the player in any of the winning combinations
+    let board = this.copy();
+    let p1Winner = WINNING_COMBINATIONS.some((combination) => {
+      return combination.every((index) => {
+        return board[index] === P1;
+      });
+    });
+    let p2Winner = WINNING_COMBINATIONS.some((combination) => {
+      return combination.every((index) => {
+        return board[index] === P2;
+      });
+    });
+    if (p1Winner === true) {
+      return P1;
+    } else if (p2Winner === true) {
+      return P2;
+    } else if (this.isDraw()) {
+      return BOTH;
+    } else {
+      return EMPTY;
+    }
   }
 }
 

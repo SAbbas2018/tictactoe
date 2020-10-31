@@ -1,13 +1,14 @@
-const { EMPTY } = require("../constants");
+const { EMPTY, RANDOM_STRATEGY } = require("../constants");
 class RandomStrategy {
   constructor(player) {
     this.player = player;
   }
   getMove(gameBoard) {
+    let board = gameBoard.copy();
     let possibleMoves = [];
-    let gameBoardLength = gameBoard.length;
+    let gameBoardLength = board.length;
     for (let cell = 0; cell < gameBoardLength; cell = cell + 1) {
-      if (gameBoard[cell] === EMPTY) {
+      if (board[cell] === EMPTY) {
         possibleMoves.push(cell);
       }
     }
@@ -15,7 +16,7 @@ class RandomStrategy {
     return possibleMoves[index];
   }
   name() {
-    return "Random Strategy";
+    return RANDOM_STRATEGY;
   }
 }
 

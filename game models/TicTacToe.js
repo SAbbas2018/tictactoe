@@ -11,6 +11,9 @@ class TicTacToe {
   getGameBoard() {
     return this.tictactoeBoard.copy();
   }
+  getTicTacToeBoard() {
+    return this.tictactoeBoard;
+  }
   setPlayer(player) {
     this.whoseTurn = player;
   }

@@ -1,6 +1,11 @@
 const RandomStrategy = require("./strategies/randomStrategy");
 const FirstPossibleStrategy = require("./strategies/firstPossibleStrategy");
-const { FIRST_POSSIBLE, RANDOM_STRATEGY } = require("./constants");
+const MinMaxStrategy = require("./strategies/minmaxStrategy");
+const {
+  FIRST_POSSIBLE,
+  RANDOM_STRATEGY,
+  MINMAX_STRATEGY,
+} = require("./constants");
 class PlayerTwo {
   constructor(player) {
     this.player = player;
@@ -19,6 +24,9 @@ class PlayerTwo {
         break;
       case RANDOM_STRATEGY:
         this.strategy = new RandomStrategy(this.getPlayer());
+        break;
+      case MINMAX_STRATEGY:
+        this.strategy = new MinMaxStrategy(this.getPlayer());
         break;
       default:
         this.strategy = new FirstPossibleStrategy(this.getPlayer());

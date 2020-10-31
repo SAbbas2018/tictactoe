@@ -4,12 +4,13 @@ import TicTacToe from "./components/TicTacToe";
 import TicTacToeAI from "./components/TicTacToeAI";
 import Home from "./components/Home";
 import "./App.css";
+import Header from "./components/Header";
 
 function App() {
   return (
     <BrowserRouter>
       <section className="App">
-        <header className="App-header">Tic Tac Toe</header>
+        <Header />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/tictactoe" component={TicTacToe} />

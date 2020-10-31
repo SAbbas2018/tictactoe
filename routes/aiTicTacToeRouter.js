@@ -26,14 +26,12 @@ router.post("/makeMove", async (req, res) => {
   try {
     const { board, index, currentPlayer, difficulty } = req.body;
     if (board[index] !== EMPTY) {
-      res
-        .status(200)
-        .json({
-          message: "success",
-          playerWinner: EMPTY,
-          boardToReturn: board,
-          nextPlayer: currentPlayer,
-        });
+      res.status(200).json({
+        message: "success",
+        playerWinner: EMPTY,
+        boardToReturn: board,
+        nextPlayer: currentPlayer,
+      });
     } else {
       const tictactoe = new TicTacToe();
       tictactoe.setGameBoard(board);
@@ -43,7 +41,8 @@ router.post("/makeMove", async (req, res) => {
         // Game is not over, so make a move for the ai
         let ai = new PlayerTwo(P2);
         ai.setStrategy(difficulty);
-        const move = ai.getMove(tictactoe.getGameBoard());
+        const move = ai.getMove(tictactoe.getTicTacToeBoard());
+        // console.log(move);
         winner = tictactoe.makeMove(move);
       }
       let playerWinner = winner === EMPTY ? EMPTY : winner;
