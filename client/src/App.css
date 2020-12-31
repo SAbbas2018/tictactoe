@@ -241,3 +241,51 @@ body {
   margin: 10px;
   width: 25%;
 }
+
+.Gameroom-options-container {
+  width: 50%;
+  margin: 5em auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.options-spacer {
+  text-align: center;
+  margin: 1em;
+}
+
+.join-game-text {
+  text-align: center;
+}
+
+/* Host */
+.not-player-turn {
+  cursor: not-allowed;
+}
+
+.game-code-display {
+  position: absolute;
+  left: 25%;
+  top: 10%;
+  width: 50%;
+  height: 20px;
+  text-align: center;
+  font-size: 2em;
+}
+
+/* .tic-tac-toe-host {
+  height: 70vh;
+  margin: 4em;
+} */
+
+/* .DisplaySocket {
+  margin: auto;
+} */
+
+@media only screen and (max-width: 600px) {
+  .game-code-display {
+    left: 25%;
+    bottom: -70%;
+    font-size: 1.2em;
+  }
+}

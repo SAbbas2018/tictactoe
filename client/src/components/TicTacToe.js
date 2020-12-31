@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import Axios from "axios";
 import Display from "./Display";
 const EMPTY = "";
 const P1 = "X";
 function TicTacToe(props) {
-  const history = useHistory();
+  // const history = useHistory();
   // X wins, O Wins, or both ie draw
   const [winner, setWinner] = useState(null);
   // Class used to determine the endgame screen should show or not
@@ -54,10 +54,10 @@ function TicTacToe(props) {
     setEndGame("show");
   };
 
-  const handleBackToHome = (e) => {
-    e.preventDefault();
-    history.push("/");
-  };
+  // const handleBackToHome = (e) => {
+  //   e.preventDefault();
+  //   history.push("/");
+  // };
 
   const data = {
     currentPlayer,
