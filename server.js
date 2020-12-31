@@ -23,7 +23,7 @@ const server = app.listen(PORT, () =>
 const options = {
   path: "/socket",
   cors: {
-    origin: "*",
+    origin: "https://tictactoe-sa.herokuapp.com/",
     methods: ["GET", "POST"],
   },
 };
