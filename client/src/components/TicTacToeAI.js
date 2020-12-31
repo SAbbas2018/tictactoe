@@ -18,7 +18,7 @@ function TicTacToeAI(props) {
   let [board, setBoard] = useState(["", "", "", "", "", "", "", "", ""]);
   const startGame = async () => {
     try {
-      const response = await Axios.get("http://localhost:5000/ai/getGame");
+      const response = await Axios.get("/ai/getGame");
       const { gameBoard } = response.data;
       setWinner(null);
       setEndGame("");
@@ -36,15 +36,12 @@ function TicTacToeAI(props) {
   const handleClick = async (e) => {
     e.preventDefault();
     const index = e.target.id;
-    let makeMoveResponse = await Axios.post(
-      "http://localhost:5000/ai/makeMove",
-      {
-        board,
-        index,
-        currentPlayer,
-        difficulty,
-      }
-    );
+    let makeMoveResponse = await Axios.post("/ai/makeMove", {
+      board,
+      index,
+      currentPlayer,
+      difficulty,
+    });
     // console.log(makeMoveResponse.data);
     const { playerWinner, boardToReturn, nextPlayer } = makeMoveResponse.data;
     setBoard(boardToReturn);

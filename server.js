@@ -23,7 +23,7 @@ const server = app.listen(PORT, () =>
 const options = {
   path: "/socket",
   cors: {
-    origin: "http://localhost:3000",
+    origin: "*",
     methods: ["GET", "POST"],
   },
 };
