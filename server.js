@@ -146,3 +146,13 @@ io.on("connection", (client) => {
 //Set up Routes for TicTacToe
 app.use("/tictactoe", require("./routes/tictactoeRouter"));
 app.use("/ai", require("./routes/aiTicTacToeRouter"));
+
+// Serve Static assets
+// Serve static assets
+if (process.env.NODE_ENV === "production") {
+  // set static folder
+  app.use(express.static("client/build"));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
