@@ -19,7 +19,7 @@ function TicTacToeAI(props) {
   let [board, setBoard] = useState(["", "", "", "", "", "", "", "", ""]);
   const startGame = async () => {
     try {
-      const response = await Axios.get("ai/getGame");
+      const response = await Axios.get("/ai/getGame");
       const { gameBoard } = response.data;
       setWinner(null);
       setEndGame("");
