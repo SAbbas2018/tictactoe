@@ -28,6 +28,7 @@ const options = {
     methods: ["GET", "POST"],
   },
 };
+//https://tictactoe-sa.herokuapp.com/
 const io = require("socket.io")(server, options);
 
 // clientRooms object for game rooms and state object for storing state in the game room
@@ -111,7 +112,7 @@ io.on("connection", (client) => {
     client.join(code);
     client.number = 2;
     client.emit("player", P2);
-
+    io.in(code).emit("p2Online");
     const currentPlayer = state[code].whoseTurn;
     const board = state[code].getGameBoard();
     const winner = state[code].tictactoeBoard.checkWinner();

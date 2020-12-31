@@ -8,6 +8,7 @@ import {
   MINMAX_STRATEGY,
 } from "../constants/constants";
 import Display from "./Display";
+import PlayerIdentifier from "./PlayerIdentifier";
 function TicTacToeAI(props) {
   // X wins, O Wins, or both ie draw
   const [winner, setWinner] = useState(null);
@@ -18,7 +19,7 @@ function TicTacToeAI(props) {
   let [board, setBoard] = useState(["", "", "", "", "", "", "", "", ""]);
   const startGame = async () => {
     try {
-      const response = await Axios.get("/ai/getGame");
+      const response = await Axios.get("ai/getGame");
       const { gameBoard } = response.data;
       setWinner(null);
       setEndGame("");
@@ -58,6 +59,7 @@ function TicTacToeAI(props) {
   };
   return (
     <div className="tic-tac-toe">
+      <PlayerIdentifier currentPlayer={currentPlayer} />
       <Display
         data={{ currentPlayer, board, winner, endGame, handleClick, startGame }}
       />

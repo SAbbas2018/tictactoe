@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 // import { useHistory } from "react-router-dom";
 import Axios from "axios";
 import Display from "./Display";
+import PlayerIdentifier from "./PlayerIdentifier";
 const EMPTY = "";
 const P1 = "X";
 function TicTacToe(props) {
@@ -62,6 +63,7 @@ function TicTacToe(props) {
   };
   return (
     <div className="tic-tac-toe">
+      <PlayerIdentifier currentPlayer={currentPlayer} />
       <Display data={data} />
     </div>
   );
