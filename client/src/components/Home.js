@@ -21,7 +21,7 @@ function Home() {
       <article className="option">
         <div className="base-tic-tac-toe"></div>
         <div className="info">
-          <header className="mode-header">Basic TicTacToe with a friend</header>
+          <header className="mode-header">Basic TicTacToe</header>
           <button
             type="button"
             className="btn btn-success btn"
@@ -49,7 +49,7 @@ function Home() {
       <article className="option">
         <div className="base-tic-tac-toe"></div>
         <div className="info">
-          <header className="mode-header">TicTacToe Gameroom</header>
+          <header className="mode-header">Play TicTacToe with a friend</header>
           <button
             type="button"
             className="btn btn-success btn"
