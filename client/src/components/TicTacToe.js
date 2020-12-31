@@ -31,14 +31,12 @@ function TicTacToe(props) {
 
   const handleClick = async (e) => {
     e.preventDefault();
-    // console.log("handle click");
     const index = e.target.id;
     let makeMoveResponse = await Axios.post("/tictactoe/makeMove", {
       board,
       index,
       currentPlayer,
     });
-    // console.log(makeMoveResponse.data);
     const { playerWinner, boardToReturn, nextPlayer } = makeMoveResponse.data;
     setBoard(boardToReturn);
     if (playerWinner === EMPTY) {

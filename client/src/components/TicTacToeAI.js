@@ -42,7 +42,6 @@ function TicTacToeAI(props) {
       currentPlayer,
       difficulty,
     });
-    // console.log(makeMoveResponse.data);
     const { playerWinner, boardToReturn, nextPlayer } = makeMoveResponse.data;
     setBoard(boardToReturn);
     if (playerWinner === EMPTY) {
@@ -55,7 +54,6 @@ function TicTacToeAI(props) {
 
   const handleDifficulty = (e) => {
     e.preventDefault();
-    console.log(e.target.id);
     setDifficulty(e.target.id);
   };
   return (

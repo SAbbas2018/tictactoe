@@ -1,5 +1,6 @@
 const express = require("express");
 const colors = require("colors");
+const path = require("path");
 const cors = require("cors");
 const { makeid } = require("./utils");
 
@@ -34,7 +35,6 @@ const clientRooms = {};
 const state = {};
 
 io.on("connection", (client) => {
-  // console.log("hello client", client.id);
   client.on("host", handleHost);
   client.on("makeMove", handleMakeMove);
   client.on("joinGame", handleJoinGame);
@@ -44,14 +44,13 @@ io.on("connection", (client) => {
 
   // Handler Functions
   function handleHost() {
-    // console.log("host");
     let roomCode = makeid(5);
     clientRooms[client.id] = roomCode;
     client.join(roomCode);
     client.number = 1;
     client.emit("player", P1);
     client.emit("gameCode", roomCode);
-    // console.log("Game Code: ", roomCode);
+
     const gameState = new TicTacToe();
     state[roomCode] = gameState;
     const currentPlayer = gameState.whoseTurn;
@@ -73,9 +72,9 @@ io.on("connection", (client) => {
       if (player !== state[room].whoseTurn) {
         return;
       }
-      // console.log(state[room]);
+
       state[room].makeMove(index);
-      // console.log("After move", state[room]);
+
       const currentPlayer = state[room].whoseTurn;
       const board = state[room].getGameBoard();
       let winner = state[room].tictactoeBoard.checkWinner();
@@ -86,7 +85,7 @@ io.on("connection", (client) => {
         winner = "O wins!";
       }
       const props = { currentPlayer, board, winner, endGame };
-      // console.log(props);
+
       io.in(room).emit("gameState", props);
     } catch (error) {
       console.log(error);

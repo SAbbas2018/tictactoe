@@ -10,7 +10,7 @@ export default function DisplaySocket(props) {
     startGame,
     playerTurn,
   } = props.data;
-  console.log(props.data);
+  // console.log(props.data);
   return (
     <div className="DisplaySocket">
       <div className={`board ${currentPlayer}`} id="board">

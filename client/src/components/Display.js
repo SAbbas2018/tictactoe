@@ -9,7 +9,7 @@ export default function Display(props) {
     handleClick,
     startGame,
   } = props.data;
-  console.log(props.data);
+  // console.log(props.data);
   return (
     <div>
       <div className={`board ${currentPlayer}`} id="board">

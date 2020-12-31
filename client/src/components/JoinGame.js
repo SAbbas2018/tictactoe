@@ -29,16 +29,14 @@ export default function JoinGame() {
     const index = e.target.id;
     socket.emit("makeMove", index, thisPlayer);
   };
-  socket.on("connect", () => {
-    console.log(socket.id);
-  });
+  // socket.on("connect", () => {
+  //   console.log(socket.id);
+  // });
 
   socket.on("player", (player) => {
-    console.log("Set Player!");
     setPlayer(player);
   });
   socket.on("gameState", (game) => {
-    console.log(game);
     setGameState(game);
     game.currentPlayer === thisPlayer
       ? setPlayerTurn("player-turn")

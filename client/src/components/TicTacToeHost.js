@@ -22,9 +22,9 @@ export default function TicTacToeHost() {
   const handlePlayerDisconnect = () => {
     history.push(`/`);
   };
-  socket.on("connect", () => {
-    console.log(socket.id);
-  });
+  // socket.on("connect", () => {
+  //   console.log(socket.id);
+  // });
   socket.on("gameCode", (code) => {
     setGameCode(code);
   });
@@ -35,7 +35,6 @@ export default function TicTacToeHost() {
     setPlayer(player);
   });
   socket.on("gameState", (game) => {
-    console.log(game);
     setGameState(game);
     game.currentPlayer === thisPlayer
       ? setPlayerTurn("player-turn")
